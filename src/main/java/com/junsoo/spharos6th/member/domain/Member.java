@@ -15,6 +15,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private  String memberUuid;
+
     @Comment("회원 이름")
     @Column(nullable = true, length = 100)
     private String name;
@@ -27,8 +29,10 @@ public class Member {
     private String birth;
 
     @Builder
-    public Member(Long id, String name, String email, String password, String phoneNumber, String birth) {
+
+    public Member(Long id, String memberUuid, String name, String email, String password, String phoneNumber, String birth) {
         this.id = id;
+        this.memberUuid = memberUuid;
         this.name = name;
         this.email = email;
         this.password = password;
