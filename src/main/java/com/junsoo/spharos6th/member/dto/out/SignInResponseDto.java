@@ -1,12 +1,15 @@
 package com.junsoo.spharos6th.member.dto.out;
 
 import com.junsoo.spharos6th.member.domain.Member;
-import com.junsoo.spharos6th.member.dto.in.SignInRequestDto;
+import com.junsoo.spharos6th.member.vo.SignInResponseVo;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
 public class SignInResponseDto {
+
     private String accessToken;
     private String memberUuid;
     private String name;
@@ -19,11 +22,20 @@ public class SignInResponseDto {
     }
 
     public static SignInResponseDto from(Member member, String accessToken) {
-        return SignInRequestDto.builder()
+        return SignInResponseDto.builder()
                 .accessToken(accessToken)
-                .memberUuid(member.getMemberUuid()
+                .memberUuid(member.getMemberUuid())
                 .name(member.getName())
                 .build();
     }
+
+    public SignInResponseVo toVo() {
+        return SignInResponseVo.builder()
+                .accessToken(accessToken)
+                .memberUuid(memberUuid)
+                .name(name)
+                .build();
+    }
+
 
 }
