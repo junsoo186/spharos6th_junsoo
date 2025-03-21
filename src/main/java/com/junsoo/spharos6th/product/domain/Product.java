@@ -10,6 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private  String productCode;
+    private  String productName;
+    private  String productDescription;
 
+    @Lob
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private  String productDetailContent;
 
 }
